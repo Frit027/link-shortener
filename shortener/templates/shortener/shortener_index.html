@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Title</title>
+    </head>
+    <body>
+        <form method="post">
+            {% csrf_token %}
+            <label for="long_url">Вставьте ваш URL:</label>
+            {{ form.long_url }}
+{#            <input id="long_url" name="input_url" type="text"#}
+{#                   placeholder="https://en.wikipedia.org/wiki/The_Triumph_of_Cleopatra"#}
+{#                   required autocomplete="off">#}
+            <br>
+
+            <label for="length">Длина нового URL:</label>
+            <select name="url_length" id="length">
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5" selected>5</option>
+                <option value="6">6</option>
+                <option value="7">7</option>
+            </select>
+
+            <p>Или вы можете придумать собственный короткий URL</p>
+
+            <label for="new_url">Введите новый URL:</label>
+            <input id="new_url" type="text"
+                   placeholder="The_Triumph_of_Cleopatra"
+                   autocomplete="off">
+            <br>
+
+            <button type="submit">Сократить</button>
+            <br>
+            {% if token %}
+                <span>{{ token }}</span>
+            {% else %}
+                <span>http://127.0.0.1:8000/The_Triumph_of_Cleopatra</span>
+            {% endif %}
+        </form>
+    </body>
+</html>
