@@ -9,13 +9,11 @@
             {% csrf_token %}
             <label for="long_url">Вставьте ваш URL:</label>
             {{ form.long_url }}
-{#            <input id="long_url" name="input_url" type="text"#}
-{#                   placeholder="https://en.wikipedia.org/wiki/The_Triumph_of_Cleopatra"#}
-{#                   required autocomplete="off">#}
+
             <br>
 
             <label for="length">Длина нового URL:</label>
-            <select name="url_length" id="length">
+            <select name="requested_length" id="length">
                 <option value="1">1</option>
                 <option value="2">2</option>
                 <option value="3">3</option>
@@ -36,9 +34,7 @@
             <button type="submit">Сократить</button>
             <br>
             {% if token %}
-                <span>{{ token }}</span>
-            {% else %}
-                <span>http://127.0.0.1:8000/The_Triumph_of_Cleopatra</span>
+                <span>http://127.0.0.1:8000/{{ token }}</span>
             {% endif %}
         </form>
     </body>
